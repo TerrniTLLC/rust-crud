@@ -634,3 +634,14 @@ Interval writes: 123 writes, 0 keys, 123 commit groups, 1.0 writes per commit gr
 Interval WAL: 123 writes, 0 syncs, 123.00 writes per sync, written: 0.00 GB, 0.00 MB/s
 Interval stall: 00:00:0.000 H:M:S, 0.0 percent
 Write Stall (count): write-buffer-manager-limit-stops: 0, 
+2023/12/25-08:49:42.937825 415058 [db/db_impl/db_impl.cc:1084] ------- DUMPING STATS -------
+2023/12/25-08:49:42.937879 415058 [db/db_impl/db_impl.cc:1086] 
+** DB Stats **
+Uptime(secs): 53862.8 total, 600.0 interval
+Cumulative writes: 2874 writes, 3 keys, 2874 commit groups, 1.0 writes per commit group, ingest: 0.00 GB, 0.00 MB/s
+Cumulative WAL: 2874 writes, 0 syncs, 2874.00 writes per sync, written: 0.00 GB, 0.00 MB/s
+Cumulative stall: 00:00:0.000 H:M:S, 0.0 percent
+Interval writes: 121 writes, 0 keys, 121 commit groups, 1.0 writes per commit group, ingest: 0.00 MB, 0.00 MB/s
+Interval WAL: 121 writes, 0 syncs, 121.00 writes per sync, written: 0.00 GB, 0.00 MB/s
+Interval stall: 00:00:0.000 H:M:S, 0.0 percent
+Write Stall (count): write-buffer-manager-limit-stops: 0, 
