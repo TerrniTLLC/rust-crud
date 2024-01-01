@@ -34,7 +34,7 @@ impl Database {
             Box::leak(s.into_boxed_str())
         }
 
-        let db_url: String = env::var("DB_URL").expect("Database URL must be set.");
+        let db_url = string_to_static_str(env::var("DB_URL").expect("Database URL must be set."));
         let db_username =
             string_to_static_str(env::var("DB_USERNAME").expect("Database username must set."));
         let db_password =
@@ -60,6 +60,18 @@ impl Database {
         let result: Result<Vec<Noodle>, Error> = self.client.select("noodles").await;
         match result {
             Ok(all_noodles) => Some(all_noodles),
+            Err(_) => None,
+        }
+    }
+
+    pub async fn add_noodle(&self, new_noodle: Noodle) -> Option<Noodle> {
+        let result = self
+            .client
+            .create(("noodle", new_noodle.uuid.clone()))
+            .content(new_noodle)
+            .await;
+        match result {
+            Ok(created) => created,
             Err(_) => None,
         }
     }

@@ -4,8 +4,10 @@ use validator::Validate;
 
 #[derive(Validate, Deserialize, Serialize)]
 pub struct BuyNoodleRequest {
-    #[validate(length(min = 1, message = "noodle name required"))]
+    #[validate(length(min = 1, message = "Name is required"))]
     pub noodle_name: String,
+    #[validate(length(min = 1, message = "Description is required"))]
+    pub description: String,
 }
 
 #[derive(Validate, Deserialize, Serialize)]
