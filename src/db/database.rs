@@ -57,7 +57,7 @@ impl Database {
     }
 
     pub async fn get_all_noodles(&self) -> Option<Vec<Noodle>> {
-        let result: Result<Vec<Noodle>, Error> = self.client.select("noodles").await;
+        let result: Result<Vec<Noodle>, Error> = self.client.select("noodle").await;
         match result {
             Ok(all_noodles) => Some(all_noodles),
             Err(_) => None,

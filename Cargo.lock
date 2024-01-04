@@ -2595,6 +2595,7 @@ dependencies = [
  "derive_more",
  "dotenv",
  "json",
+ "log",
  "serde",
  "surrealdb",
  "uuid",
