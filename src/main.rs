@@ -1,8 +1,10 @@
 use actix_web::web::Data;
 use actix_web::{get, patch, post, web::Json, web::Path, App, HttpResponse, HttpServer, Responder};
+use errors::NoodleError;
 use uuid;
 mod db;
 use crate::db::Database;
+mod errors;
 mod models;
 use crate::models::noodle::{BuyNoodleRequest, Noodle, UpdateNoodleURL};
 use validator::{Validate, ValidationErrors};
@@ -13,12 +15,11 @@ use dotenv::dotenv;
 use std::env;
 
 #[get("/noodles")]
-
-async fn get_noodles(db: Data<Database>) -> impl Responder {
+async fn get_noodles(db: Data<Database>) -> Result<Json<Vec<Noodle>>, NoodleError> {
     let result = db.get_all_noodles().await;
     match result {
-        Some(found_noodles) => HttpResponse::Ok().body(format!("{:?}", found_noodles)),
-        None => HttpResponse::Ok().body("Error !"),
+        Some(found_noodles) => Ok(Json(found_noodles)),
+        None => Err(NoodleError::NoNoodlesFound),
     }
 }
 

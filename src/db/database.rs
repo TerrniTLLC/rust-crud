@@ -34,7 +34,7 @@ impl Database {
             Box::leak(s.into_boxed_str())
         }
 
-        let db_url = string_to_static_str(env::var("DB_URL").expect("Database URL must be set."));
+        let db_url = env::var("DB_URL").expect("Database URL must be set.");
         let db_username =
             string_to_static_str(env::var("DB_USERNAME").expect("Database username must set."));
         let db_password =
