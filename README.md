@@ -1,6 +1,12 @@
 ## To run the application stack
 
-### 1.- actix-surrealdb-api, server/API built using Rust's Actix-web framework and SurrealDB database running in a Docker container.
+### 1.- First things first, copy environment variables from `.env.example`
+
+```
+$ cp .env.example .env
+```
+
+### 2.- actix-surrealdb-api, server/API built using Rust's Actix-web framework and SurrealDB database running in a Docker container.
 
 In addition to the obvious prerequisite of having Rust and SurrealDB CLI installed, we need to do the following:
 

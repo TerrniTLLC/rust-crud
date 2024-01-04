@@ -9,7 +9,7 @@ use actix_web::{
 pub enum NoodleError {
     NoNoodlesFound,
     NoodleCreationError,
-    NoSuchNoodleErorr,
+    NoSuchNoodleError,
 }
 
 impl ResponseError for NoodleError {
@@ -23,7 +23,7 @@ impl ResponseError for NoodleError {
         match self {
             NoodleError::NoNoodlesFound => StatusCode::NOT_FOUND, // 404
             NoodleError::NoodleCreationError => StatusCode::INTERNAL_SERVER_ERROR, // 500
-            NoodleError::NoSuchNoodleErorr => StatusCode::NOT_FOUND, // 404
+            NoodleError::NoSuchNoodleError => StatusCode::NOT_FOUND, // 404
         }
     }
 }

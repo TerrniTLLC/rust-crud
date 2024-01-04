@@ -7,8 +7,6 @@ extern crate dotenv;
 use dotenv::dotenv;
 use std::env;
 
-use crate::models::noodle::Noodle;
-
 #[derive(Clone, Debug)]
 pub struct Database {
     pub client: Surreal<Client>,
@@ -54,25 +52,5 @@ impl Database {
             name_space: String::from("public"),
             db_name: String::from("noodles"),
         })
-    }
-
-    pub async fn get_all_noodles(&self) -> Option<Vec<Noodle>> {
-        let result: Result<Vec<Noodle>, Error> = self.client.select("noodle").await;
-        match result {
-            Ok(all_noodles) => Some(all_noodles),
-            Err(_) => None,
-        }
-    }
-
-    pub async fn add_noodle(&self, new_noodle: Noodle) -> Option<Noodle> {
-        let result = self
-            .client
-            .create(("noodle", new_noodle.uuid.clone()))
-            .content(new_noodle)
-            .await;
-        match result {
-            Ok(created) => created,
-            Err(_) => None,
-        }
     }
 }
